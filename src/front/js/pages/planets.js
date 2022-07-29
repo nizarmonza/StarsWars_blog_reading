@@ -1,6 +1,7 @@
 import React, { useContext, useEffect} from 'react';
 import { Context } from '../store/appContext';
-import { Cards } from '../component/card';
+import { Cards1 } from '../component/cards';
+import "../../styles/planets.css";
 
 const Planets = () => {
     const { store, actions } = useContext(Context);
@@ -11,13 +12,19 @@ const Planets = () => {
             <div className="row">
                 <div className="hiddenScroll d-flex flex-row">
                     {store.planets.map((planet, index) => (
-                    <><Cards 
+                    <>
+                    <Cards1 
+                    key={index}
                     title={planet.name}
-                    text={`${planet.name} is a planet with a gravity of ${planet.climate}`}/></>
+                    climate={planet.climate}
+                    terrain={planet.terrain}
+                    population={planet.population}/>
+                    </>
                     ))}
                 </div>
             </div>
         </div>
+        
     )
 }
 

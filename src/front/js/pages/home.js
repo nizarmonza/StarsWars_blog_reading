@@ -2,25 +2,25 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { Planets } from "./planets";
+import { People } from "./people";
+import { Container, Col } from "react-bootstrap";
+
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-					Read documentation
-				</a>
-			</p>
-		</div>
+    <Container fluid>
+      <h1 className="offset-2">People</h1>
+      <Col>
+        <People />
+      </Col>
+      <h1 className="offset-2">Planets</h1>
+      <Col>
+        <Planets />
+      </Col>
+		
+    </Container>
 	);
 };
