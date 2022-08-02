@@ -1,13 +1,21 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Cards2 } from "../component/cards.js";
+import { Favorites } from "../layout";
 
 const People = () => {
     const { store, actions } = useContext(Context);
+    const {fav, setFav} = useContext(Favorites);
 
     useEffect(() => {
         actions.getPeople();
       }, []);
+
+      useEffect(() => {
+        setFav("myfav");
+        
+      }, []);
+      console.log(fav);
 
     return(
         
