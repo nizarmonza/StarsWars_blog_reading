@@ -16,3 +16,24 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/people', methods=['GET'])
+def get_people():
+    people = People.query.all()
+    if people is None:
+        return jsonify(msg="This page does not exist."), 400
+    else:
+        return jsonify(
+        data=[person.serialize() for person in people]), 200
+
+@api.route('/people/<int:id>', methods=['GET'])
+def get_person(id):
+    person = People.query.filter(
+        People.id == id
+    ).one_or_none()
+    if person is None:
+        return jsonify(msg="This person does not exist."), 400
+    else:
+        return jsonify(
+        data=person.serialize()
+        ), 200
